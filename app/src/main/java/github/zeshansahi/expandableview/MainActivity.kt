@@ -31,12 +31,11 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     Column {
-                        LazyColumn(
-                            contentPadding = PaddingValues(8.dp)
-                        ) {
-                            items(50) { item ->
+                        CustomToolBar()
+                        LazyColumn {
+                            items(20) { item ->
                                 ExpandableCard("My Title $item")
-                                Divider()
+
                             }
                         }
                     }
@@ -65,12 +64,10 @@ fun GreetingPreview() {
             color = MaterialTheme.colorScheme.background
         ) {
             Column {
-                LazyColumn(
-                    contentPadding = PaddingValues(8.dp)
-                ) {
-                    items(10) { item ->
+                CustomToolBar()
+                LazyColumn {
+                    items(5) { item ->
                         ExpandableCard("My Title $item")
-                        Divider()
                     }
                 }
             }

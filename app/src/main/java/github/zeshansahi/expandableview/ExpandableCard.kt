@@ -57,7 +57,7 @@ fun ExpandableCard(title: String="My Title", description: String="This is the de
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(12.dp),
+                .padding(5.dp),
 
             ) {
             Row(verticalAlignment = Alignment.CenterVertically) {
@@ -65,7 +65,7 @@ fun ExpandableCard(title: String="My Title", description: String="This is the de
                     modifier = Modifier
                         .weight(6f),
                     text = title,
-                    fontSize = MaterialTheme.typography.headlineMedium.fontSize,
+                    fontSize = MaterialTheme.typography.titleLarge.fontSize,
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis
                 )
