@@ -1,6 +1,7 @@
-# UnityCafeApp
+# ExpandableView
 
-Android application that provides colour and sound control for the CWI tablet
+
+Android application that uses JetPack compose latest UI
 
 ## Tech stack
 
