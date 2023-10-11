@@ -6,6 +6,7 @@ import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentHeight
@@ -16,6 +17,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -34,7 +36,7 @@ import androidx.compose.ui.unit.dp
 
 @ExperimentalMaterial3Api
 @Composable
-fun ExpandableCard() {
+fun ExpandableCard(title: String="My Title", description: String="This is the description. ") {
     var expandedState by remember { mutableStateOf(false) }
     val rotationState by animateFloatAsState(targetValue = if (expandedState) 180f else 0f)
 
@@ -55,13 +57,14 @@ fun ExpandableCard() {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(12.dp)
-        ) {
+                .padding(12.dp),
+
+            ) {
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Text(
                     modifier = Modifier
                         .weight(6f),
-                    text = "My title",
+                    text = title,
                     fontSize = MaterialTheme.typography.headlineMedium.fontSize,
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis
@@ -80,7 +83,7 @@ fun ExpandableCard() {
             }
             if (expandedState) {
                 Text(
-                    text = "Description".repeat(20),
+                    text = description.repeat(20),
                     fontSize = MaterialTheme.typography.bodySmall.fontSize,
                     fontWeight = FontWeight.Normal,
                     maxLines = 4,
@@ -97,5 +100,8 @@ fun ExpandableCard() {
 @Composable
 @Preview
 fun ExpandablePreview() {
-    ExpandableCard()
+    Surface(modifier = Modifier.fillMaxSize()) {
+
+        ExpandableCard()
+    }
 }

@@ -3,7 +3,12 @@ package github.zeshansahi.expandableview
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -11,6 +16,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import github.zeshansahi.expandableview.ui.theme.ExpandableViewTheme
 
 class MainActivity : ComponentActivity() {
@@ -24,7 +30,16 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    ExpandableCard()
+                    Column {
+                        LazyColumn(
+                            contentPadding = PaddingValues(8.dp)
+                        ) {
+                            items(50) { item ->
+                                ExpandableCard("My Title $item")
+                                Divider()
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -39,10 +54,26 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
     )
 }
 
+@ExperimentalMaterial3Api
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
     ExpandableViewTheme {
-        Greeting("Android")
+        // A surface container using the 'background' color from the theme
+        Surface(
+            modifier = Modifier.fillMaxSize(),
+            color = MaterialTheme.colorScheme.background
+        ) {
+            Column {
+                LazyColumn(
+                    contentPadding = PaddingValues(8.dp)
+                ) {
+                    items(10) { item ->
+                        ExpandableCard("My Title $item")
+                        Divider()
+                    }
+                }
+            }
+        }
     }
 }
